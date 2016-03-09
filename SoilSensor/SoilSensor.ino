@@ -37,14 +37,14 @@ void setup() {
   pinMode(s1PowerPin, OUTPUT);
   pinMode(s2PowerPin, OUTPUT);
 
-  digitalWrite(s1PowerPin, HIGH);
-  digitalWrite(s2PowerPin, HIGH);
 
 }
 
 void loop() {
   // bring senors online  
-  delay(600);
+  digitalWrite(s1PowerPin, HIGH);
+  digitalWrite(s2PowerPin, HIGH);
+  delay(600);  
   
   s1AnalogValue = analogRead(s1Analog);
   s2AnalogValue = analogRead(s2Analog);
@@ -87,9 +87,14 @@ void loop() {
 
   Serial.print("s2 Mapped: ");
   Serial.print(s2);
-  Serial.print("\t");
+  Serial.println("\t");
   
-  Serial.println();
+  Serial.println("napping...");
+
+  digitalWrite(s1PowerPin, LOW);
+  digitalWrite(s2PowerPin, LOW);
+  delay(6000);
+
  
 
 }
